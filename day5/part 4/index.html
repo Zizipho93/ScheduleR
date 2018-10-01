@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>My first html page </title>
+        <link
+        rel="stylesheet"
+        type="text/css"
+        media="screen"
+        href="bulma.min.css"/>
+    </head>    
+    <body>
+        <div>
+        <form>
+            <div class="field">
+                <label class="label">name </label>
+                <input 
+                    id="name"
+                    class="input" 
+                    type="text" />
+                <p 
+                    id="name-error"
+                    class="help is-danger is-invisible"> 
+                    must enter a valid name 
+                </p>
+             </div>
+
+             <div class="field">
+                <label class="label">surname</label>
+                <input
+                    id="surname" 
+                    class="input" 
+                    type="text" />
+                <p
+                    id="surname-error" 
+                    class="help is-danger is-invisible"> 
+                    must enter a valid surname
+                </p>
+             </div>
+             
+             <div class="field">
+                <label class="label">age</label>
+                <input 
+                    id= "age"
+                    class="input" 
+                    type="number" />
+                <p 
+                    id="too-young-error"
+                    class="help is-danger is-invisible ">
+                    Too young</p>
+                <p 
+                    id="too-old-error"
+                    class="help is-danger is-invisible ">
+                    Too old</p>
+
+           </div>
+
+            <div class="field">
+                <label class="label">gender</label>
+                <input 
+                id="gender"
+                class="input" 
+                type="text"/>
+            <p 
+                id="name-error"
+                class="help is-danger is-invisible">must enter a valid gender</p>
+            </div>
+
+            <div class="field">
+                <label class="label">address</label>
+                <input 
+                id="address"
+                class="input" 
+                type="text"/>
+        <p class="help is-danger is-invisible">must enter a valid address</p>    
+            </div>
+
+            <div class="field">
+                    <label class="label">phone</label>
+                    <input 
+                    id="phone"
+                    class="input" 
+                    type="number"/>
+           
+            <p 
+                id="phone-code-error"
+                class="help is-danger is-invisible">
+                A phone number must start with (073)
+            </p>
+                </div>
+
+            <div class="field">
+                <input 
+                type="submit" 
+                id="submit" 
+                value="submit" 
+                class="button is-primary"/>
+            </div>
+        </form>
+    </div>
+     <script src= "script.js"></script>
+           
+</body>
+    
+</html>
