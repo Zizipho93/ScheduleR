@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>My first html page </title>
+        <link
+        rel="stylesheet"
+        type="text/css"
+        media="screen"
+        href="bulma.min.css"/>
+    </head>    
+    <body>
+        <script>
+            window.onload = function () {
+                var submitButton = document.getElementById ('submit')
+                
+                submitButton.addEventListener('click', function(Event){
+                    alert('you clicked submit again')
+                })
+            }
+        </script>
+
+        <div>
+        <form>
+            <div class="field">
+                <label class="label">name </label>
+                <input 
+                id="name"
+                class="input" 
+                type="text" />
+             </div>
+
+             <div class="field">
+                <label class="label">surname</label>
+                <input
+                id="surname" 
+                class="input" 
+                type="text" 
+                />
+             </div>
+             
+             <div class="field">
+                <label class="label">age</label>
+                <input class="input" type="number" />
+           </div>
+
+            <div class="field">
+                <label class="label">gender</label>
+                <input class="input" type="number"/>
+            </div>
+
+            <div class="field">
+                <label class="label">address</label>
+                <input class="input" 
+                type="text"
+                />
+            </div>
+
+            <div class="field">
+                <input type="submit" id="submit" value="submit" class="button is-primary"/>
+            </div>
+        </form>
+        </div>
+    </body>
+    
+</html>
