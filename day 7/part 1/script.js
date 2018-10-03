@@ -1,6 +1,8 @@
-window.onload = function(){
-    if(hasToken()){
-        getAgencies(this.localStorage.getItem('token'))
+window.onload = function() {
+    try {
+        getAgencies(getToken())
+    } catch (error) {
+        console.log(error)
     }
 
     var submitButton = this.document.getElementById('submit')
@@ -13,6 +15,33 @@ window.onload = function(){
         var clientSecret = getClientSecret()
         login(clientId, clientSecret)
     })
+
+    var submitAgenciesButton = document.getElementById('submit-agency')
+    submitAgenciesButton.addEventListener('click',function(event){
+        event.preventDefault()
+
+        var agencies = document.getElementById('agencies-select')
+        var selectedAgency = agencies.options[agencies.selectedIndex].value
+
+        getLines(getToken(), selectedAgency)
+        
+    })
+
+    var logoutButton = this.document.getElementById('submit-logout')
+
+    logoutButton.addEventListener('click', function (event) {
+        event.preventDefault()
+        localStorage.removeItem('token')
+        localStorage.removeItem('storageDate')
+    })
+}
+
+function getToken(){
+    var token = this.localStorage.getItem('token')
+    if(token == null || token == undefined || token == 'undefined'){
+        throw new Error("this is an error")
+    }
+    return token
 }
 
     function hasToken(){
@@ -48,6 +77,8 @@ var payload = {
   'grant_type': 'client_credentials',
   'scope': 'transportapi:all'
 };
+
+
 var request = new XMLHttpRequest();
 request.open('POST', 'https://identity.whereismytransport.com/connect/token', true);
 request.addEventListener('load', function () {
@@ -55,11 +86,12 @@ request.addEventListener('load', function () {
   var token = response.access_token;
   window.token = token;
 
+
   localStorage.setItem('token', token)
   localStorage.setItem('storageDate', Date.now().toLocaleString())
 
-  var resultWindow = document.getElementById('result')
-   resultWindow.textContent = token; 
+ // var resultWindow = document.getElementById('result')
+  // resultWindow.textContent = token; 
 
 
 });
@@ -102,25 +134,29 @@ function addAgenciesToDropDown(agenciesList) {
     })
 }
 
-function getLines(token){
+function getLines(token,agency){
     var request = new XMLHttpRequest();
-    request.addEventListener('load', function () {    
+    request.addEventListener('load', function () {  
+        if(this.status == 401){
+            return logout()
+        }  
     var response = JSON.parse(this.responseText);
+
     
 
     addLinesToDropDown(response)
 });
-request.open('GET', 'https://platform.whereismytransport.com/api/lines', true);
+request.open('GET', 'https://platform.whereismytransport.com/api/lines?agencies=' + agency, true);
 request.setRequestHeader('Accept', 'application/json');
 request.setRequestHeader('Authorization', 'Bearer ' + token);
 request.send();
 }
 
-function addLinesToDropDown(agenciesList) {
+function addLinesToDropDown(linesList) {
     var linesSelect = document.getElementById('lines-select')
     linesSelect.options.length = 0
     linesSelect.options.add(new Option("Select an option", null, true, true))
-    linesList.forEach(function(agency) {
-        linesSelect.options.add(new Option(line.name, agency.id, false, false))
+    linesList.forEach(function(line) {
+        linesSelect.options.add(new Option(line.name, line.id, false, false))
     })
 }

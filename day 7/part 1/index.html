@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>My first html page </title>
+          <link
+          rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="bulma.min.css"/>
+    </head>    
+    <body>
+     <div class="container" id="login-form">
+       <form 
+        id="login-form">
+           <div
+              class= "container" 
+              id="login" >
+               
+          </div>
+
+            <div class="field">
+                    <label class="label">Client ID</label>
+                    <input 
+                        id="client id"
+                        class="input" 
+                        type="text" />
+                 </div>
+    
+                 <div class="field">
+                    <label class="label">Client Secret</label>
+                    <input
+                        id= "client Secret"
+                        class="input" 
+                        type="text" 
+                    />
+                 </div>
+               
+                <input 
+                type="submit" 
+                id="submit" 
+                value="submit" 
+                class="button is-primary"/>
+            
+           </form>
+        </div>
+       </body>
+
+        <!-- This will list the agencies-->
+        <div class = "container" id= "agencies">
+          <form class="form is-half" id="agencies">
+            <div class="field">
+              <label class="label">Agencies</label>
+              <select id="agencies-select" type="text" >
+                <option value="" disabled="disabled">No agencies available</option>
+              </select>
+            </div>
+        
+        <div class="field">
+          <input type="submit" id="submit-agency" value="select angecy" class="button is-primary"/>
+        </div>
+      </form>
+    </div>
+        <!-- this form will list the lines-->
+        <div class="container" id="lines">
+          <form class="form is-half" id="lines">
+            <div class="field">
+              <label class="label">Lines</label>
+              <select id="lines-select" type="text" >
+              <option value="" disabled="disabled">No lines available</option>
+              </select>
+            </div>
+        
+            <div class="field">
+              <input type="submit" id="submit-line" value="select line" class="button is-primary"/>
+            </div>
+         </form>
+      </div>
+
+      <!-- logout form-->
+      <div class="container" id="logout-form">
+        <form class="form is-half" >
+          <div class= "field">
+            <input
+              type="submit"
+              id="submit-logout"
+              value="logout"
+              class="button is-danger" />
+            </div>
+          </form>
+        </div>
+
+      </div>
+       
+
+
+        <script src= "script.js"></script>
+           
+    </body>
+    
+</html>
